@@ -43,6 +43,24 @@ class Deck:
     def deal_a_card(self):
         return self.all_cards.pop()
 
+# Testing deck class
+
 card_shoe = Deck(8)
 card_shoe.shuffle()
 print(len(card_shoe.all_cards))
+
+
+# Player class
+
+class Player:
+    
+    def __init__(self, balance):
+        self.balance = balance
+
+    def __str__(self):
+        return f'Balance: ${self.balance:,}'
+    
+# Testing player class
+
+player_one = Player(10000)
+print(player_one)
