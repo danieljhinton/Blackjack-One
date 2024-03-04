@@ -139,7 +139,7 @@ def player_option():
         if decision in ('h', 's'):
             return decision
         else:
-            print('Invalid input.')
+            print('\nInvalid input.', end = '')
 
 
 def betting_round(wager):
