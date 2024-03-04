@@ -180,7 +180,13 @@ def betting_round(wager):
             else:
                 break
     
-    # Dealing the dealer's cards
+    while dealer_total < 17:    # Dealing the dealer's cards
+            dealers_cards.append(card_shoe.deal_a_card())
+            display_cards(dealers_cards)
+            dealer_total = calculate_hand_total(dealers_cards)
+
+    # Determining the winner and paying out the player if they win
+
 
 
 
