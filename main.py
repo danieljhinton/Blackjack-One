@@ -102,6 +102,10 @@ def player_wager_amount(player):
         else:
             print(f'Please enter an amount between $25 and ${player.balance}')
 
+def betting_round(wager):
+    global player_one, card_shoe
+    dealers_cards = [card_shoe.deal_a_card()]
+    players_cards = [card_shoe.deal_a_card(), card_shoe.deal_a_card()]
 
 # Game logic
 
@@ -109,3 +113,5 @@ card_shoe = Deck(number_of_decks())
 player_one = Player(starting_balance())
 card_shoe.shuffle()
 
+wager = player_wager_amount(player_one)
+betting_round(wager)
