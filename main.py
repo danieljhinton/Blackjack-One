@@ -117,6 +117,12 @@ def display_cards(cards):
     for i in cards:
         print(i, end = ' ')
 
+def calculate_hand_total(hand):
+    '''
+    Return the value of the player or dealer's hand (ie. J5 = 15)
+    '''
+    return ([i.value for i in hand])
+
 def betting_round(wager):
     '''
     Betting round logic
@@ -125,8 +131,8 @@ def betting_round(wager):
     dealers_cards = [card_shoe.deal_a_card()]
     players_cards = [card_shoe.deal_a_card(), card_shoe.deal_a_card()]
 
-    dealer_total = sum([i.value for i in dealers_cards])
-    player_total = sum([i.value for i in players_cards])
+    dealer_total = calculate_hand_total(dealers_cards)
+    player_total = calculate_hand_total(players_cards)
 
     print('Dealer: ', end = '')
     display_cards(dealers_cards)
@@ -138,6 +144,7 @@ def betting_round(wager):
         if dealer_total in (10, 11):
             print('Blackjack!\nChecking for dealer Blackjack: ')
             dealers_cards.append(card_shoe.deal_a_card())
+
 
 
 # Game logic
