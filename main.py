@@ -1,6 +1,5 @@
 import random
 
-
 # Card data
 
 suits = ('♠', '♥', '♦', '♣')
@@ -22,7 +21,7 @@ class Card:
 
     def __str__(self):
         return f'{self.rank}{self.suit}'
-    
+
 
 # Deck class - Create a deck of cards with functions to shuffle and deal one.
 # Takes single int argument for number of decks (Blackjack can be played with
@@ -39,7 +38,7 @@ class Deck:
 
     def shuffle(self):
         random.shuffle(self.all_cards)
-    
+
     def deal_a_card(self):
         return self.all_cards.pop()
 
@@ -47,7 +46,7 @@ class Deck:
 # Player class
 
 class Player:
-    
+
     def __init__(self, balance):
         self.balance = balance
 
@@ -127,7 +126,7 @@ def calculate_hand_total(hand):
     if 11 in card_value_list and hand_total > 21:    # Dealing with Aces
         hand_total -= 10
 
-    return hand_total        
+    return hand_total
 
 def player_option():
     '''
@@ -184,12 +183,12 @@ def betting_round(wager):
     if player_total > 21:    # Ending the hand if the player busted
         print('\n\nBust!')
         return 0
-    
+
     while dealer_total < 17:    # Dealing the dealer's cards
-            dealers_cards.append(card_shoe.deal_a_card())
-            dealer_total = calculate_hand_total(dealers_cards)
-            print('\nDealer: ', end = '')
-            display_cards(dealers_cards)
+        dealers_cards.append(card_shoe.deal_a_card())
+        dealer_total = calculate_hand_total(dealers_cards)
+        print('\nDealer: ', end = '')
+        display_cards(dealers_cards)
 
     if dealer_total > 21:    # Resolving the hand if the dealer busted
         print(f'\n\nDealer busted! Winner! You won ${wager * 2:,}')
@@ -214,7 +213,7 @@ card_shoe.shuffle()
 game_on = True
 
 while game_on and player_one.balance >= 10:
-    
+
     print(f'\nCurrent balance: ${player_one.balance:,}')
     wager = player_wager_amount(player_one)
     winnings = betting_round(wager)
