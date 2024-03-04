@@ -134,7 +134,7 @@ def player_option():
     Take input from user to hit or stay
     '''
     while True:
-        decision = input('\nHit or Stay? Type H to hit or S to stay: ').strip()\
+        decision = input('\n\nHit or Stay? Type H to hit or S to stay: ').strip()\
             .lower()
         if decision in ('h', 's'):
             return decision
@@ -153,7 +153,7 @@ def betting_round(wager):
     dealer_total = calculate_hand_total(dealers_cards)
     player_total = calculate_hand_total(players_cards)
 
-    print('Dealer: ', end = '')
+    print('\nDealer: ', end = '')
     display_cards(dealers_cards)
 
     print('\nPlayer: ', end = '')
@@ -168,7 +168,7 @@ def betting_round(wager):
             if dealer_total == 21:
                 print('Blackjack! Stand off!')
             else:
-                print(f'Winner! You won {wager * 1.5}!')
+                print(f'Winner! You won {wager * 1.5:,}!')
                 return wager * 1.5
     else:
         while player_total < 21:
@@ -176,20 +176,34 @@ def betting_round(wager):
             if player_decision == 'h':
                 players_cards.append(card_shoe.deal_a_card())
                 player_total = calculate_hand_total(players_cards)
+                print('\nPlayer: ', end = '')
                 display_cards(players_cards)
             else:
                 break
+
+    if player_total > 21:    # Ending the hand if the player busted
+        print('\nBust!')
+        return 0
     
     while dealer_total < 17:    # Dealing the dealer's cards
             dealers_cards.append(card_shoe.deal_a_card())
-            display_cards(dealers_cards)
             dealer_total = calculate_hand_total(dealers_cards)
+            print('\nDealer: ', end = '')
+            display_cards(dealers_cards)
 
-    # Determining the winner and paying out the player if they win
+    if dealer_total > 21:    # Resolving the hand if the dealer busted
+        print(f'\nDealer busted! Winner! You won ${wager * 2:,}')
+        return wager * 2
 
-
-
-
+    if player_total > dealer_total:
+        print(f'\nWinner! You won ${wager * 2:,}')
+        return wager * 2
+    elif player_total == dealer_total:
+        print('\nStand-off!')
+        return wager
+    else:
+        print('\nYou lost.')
+        return 0
 
 # Game logic
 
@@ -198,4 +212,6 @@ player_one = Player(starting_balance())
 card_shoe.shuffle()
 
 wager = player_wager_amount(player_one)
-betting_round(wager)
+winnings = betting_round(wager)
+player_one.balance -= wager
+player_one.balance += winnings
