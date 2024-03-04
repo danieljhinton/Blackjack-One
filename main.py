@@ -182,7 +182,7 @@ def betting_round(wager):
                 break
 
     if player_total > 21:    # Ending the hand if the player busted
-        print('\nBust!')
+        print('\n\nBust!')
         return 0
     
     while dealer_total < 17:    # Dealing the dealer's cards
