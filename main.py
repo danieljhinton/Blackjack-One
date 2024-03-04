@@ -67,11 +67,11 @@ def starting_balance():
             balance = int(input('\nEnter starting balance (100 - 1,000,000): '))
         except:
             print('\nPlease enter a number between 100 and 1,000,000')
-
-        if 100 <= balance <= 1000000:
-            return balance
         else:
-            print('\nPlease enter a number between 100 and 1,000,000')
+            if 100 <= balance <= 1000000:
+                return balance
+            else:
+                print('\nPlease enter a number between 100 and 1,000,000')
 
 def number_of_decks():
     '''
@@ -83,11 +83,11 @@ def number_of_decks():
             num_of_decks = int(input('\nEnter number of decks (1-8): '))
         except:
             print('\nPlease enter a number betwen 1 and 8')
-    
-        if 1 <= num_of_decks <= 8:
-            return num_of_decks
         else:
-            print('\nPlease enter a number betwen 1 and 8')
+            if 1 <= num_of_decks <= 8:
+                return num_of_decks
+            else:
+                print('\nPlease enter a number betwen 1 and 8')
 
 
 # Gameplay functions
@@ -192,7 +192,7 @@ def betting_round(wager):
             display_cards(dealers_cards)
 
     if dealer_total > 21:    # Resolving the hand if the dealer busted
-        print(f'\nDealer busted! Winner! You won ${wager * 2:,}')
+        print(f'\n\nDealer busted! Winner! You won ${wager * 2:,}')
         return wager * 2
 
     if player_total > dealer_total:
