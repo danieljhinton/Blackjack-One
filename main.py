@@ -211,7 +211,12 @@ card_shoe = Deck(number_of_decks())
 player_one = Player(starting_balance())
 card_shoe.shuffle()
 
-wager = player_wager_amount(player_one)
-winnings = betting_round(wager)
-player_one.balance -= wager
-player_one.balance += winnings
+game_on = True
+
+while game_on:
+    
+    print(f'\nCurrent balance: ${player_one.balance:,}')
+    wager = player_wager_amount(player_one)
+    winnings = betting_round(wager)
+    player_one.balance -= wager
+    player_one.balance += winnings
