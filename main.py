@@ -109,6 +109,13 @@ def player_wager_amount(player):
         else:
             print(f'Please enter an amount between $25 and ${player.balance}')
 
+def display_cards(cards):
+    '''
+    Print a player or dealer's current hand.
+    '''
+    for i in cards:
+        print(i, end = ' ')
+
 def betting_round(wager):
     '''
     Betting round logic
@@ -121,14 +128,16 @@ def betting_round(wager):
     player_total = 0
 
     print('Dealer: ', end = '')
-    for i in dealers_cards:
-        print(i, end = ' ')
-        dealer_total += i.value
+    display_cards(dealers_cards)
 
     print('\nPlayer: ', end = '')
-    for i in players_cards:
-        print(i, end = ' ')
-        player_total += i.value
+    display_cards(players_cards)
+
+    if player_total == 21:
+        if dealer_total in (10, 11):
+            print('Blackjack!\nChecking for dealer Blackjack: ')
+            dealers_cards.append(card_shoe.deal_a_card())
+
 
 # Game logic
 
