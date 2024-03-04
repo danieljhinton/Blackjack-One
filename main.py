@@ -64,14 +64,14 @@ def starting_balance():
     while True:
 
         try:
-            balance = int(input('Enter starting balance (100 - 1,000,000): '))
+            balance = int(input('\nEnter starting balance (100 - 1,000,000): '))
         except:
-            print('Please enter a number between 100 and 1,000,000')
+            print('\nPlease enter a number between 100 and 1,000,000')
 
         if 100 <= balance <= 1000000:
             return balance
         else:
-            print('Please enter a number between 100 and 1,000,000')
+            print('\nPlease enter a number between 100 and 1,000,000')
 
 def number_of_decks():
     '''
@@ -80,14 +80,14 @@ def number_of_decks():
     while True:
 
         try:
-            num_of_decks = int(input('Enter number of decks (1-8): '))
+            num_of_decks = int(input('\nEnter number of decks (1-8): '))
         except:
-            print('Please enter a number betwen 1 and 8')
+            print('\nPlease enter a number betwen 1 and 8')
     
         if 1 <= num_of_decks <= 8:
             return num_of_decks
         else:
-            print('Please enter a number betwen 1 and 8')
+            print('\nPlease enter a number betwen 1 and 8')
 
 
 # Gameplay functions
@@ -100,14 +100,14 @@ def player_wager_amount(player):
     while True:
 
         try:
-            wager = int(input('Enter bet amount (minimum $10, units $10): '))
+            wager = int(input('\nEnter bet amount (minimum $10, units $10): '))
         except:
-            print(f'Please enter an amount between $10 and ${player.balance}')
+            print(f'\nPlease enter an amount between $10 and ${player.balance}')
 
         if 10 <= wager <= player.balance and wager % 10 == 0:
             return wager
         else:
-            print(f'Please enter an amount between $10 and ${player.balance} in\
+            print(f'\nPlease enter an amount between $10 and ${player.balance} in\
  units of $10')
 
 def display_cards(cards):
@@ -156,7 +156,7 @@ def betting_round(wager):
     print('\nDealer: ', end = '')
     display_cards(dealers_cards)
 
-    print('\nPlayer: ', end = '')
+    print('\n\nPlayer: ', end = '')
     display_cards(players_cards)
 
     if player_total == 21:    # Resolving the hand if player has blackjack
@@ -196,13 +196,13 @@ def betting_round(wager):
         return wager * 2
 
     if player_total > dealer_total:
-        print(f'\nWinner! You won ${wager * 2:,}')
+        print(f'\n\nWinner! You won ${wager * 2:,}')
         return wager * 2
     elif player_total == dealer_total:
-        print('\nStand-off!')
+        print('\n\nStand-off!')
         return wager
     else:
-        print('\nYou lost.')
+        print('\n\nYou lost.')
         return 0
 
 # Game logic
