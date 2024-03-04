@@ -68,11 +68,15 @@ def starting_balance():
     while True:
 
         try:
-            balance = int(input('Enter starting balance: '))
+            balance = int(input('Enter starting balance (100 - 1,000,000): '))
         except:
-            print('Please enter a whole number as your starting balance')
-        else:
+            print('Please enter a number between 100 and 1,000,000')
+
+        if 100 <= balance <= 1000000:
             return balance
+        else:
+            print('Please enter a number between 100 and 1,000,000')
+
 
 def number_of_decks():
     
