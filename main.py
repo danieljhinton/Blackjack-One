@@ -1,5 +1,9 @@
 '''
-All code contained in this file
+All code contained in this file.
+
+HOUSE RULES:
+- Dealer stays on soft 17
+- Double down any two cards
 '''
 
 import random
@@ -152,7 +156,7 @@ def player_option():
     '''
     while True:
         decision = input('\n\nHit or Stay? Type H to hit, S to stay, D to \
-double down or X to surrender').strip().lower()
+double down or X to surrender: ').strip().lower()
         if decision in ('h', 's', 'd', 'x'):
             return decision
         else:
@@ -186,7 +190,7 @@ def betting_round(wager):
                 print('Blackjack! Stand off!')
             else:
                 print(f'Winner! You won {wager * 1.5:,}!')
-                return wager * 1.5
+                return int(wager * 1.5)
     else:
         while player_total < 21:
             player_decision = player_option()
@@ -195,6 +199,18 @@ def betting_round(wager):
                 player_total = calculate_hand_total(players_cards)
                 print('\nPlayer: ', end = '')
                 display_cards(players_cards)
+            elif player_decision == 'd':
+                print('\nDoubling Down! Good Luck!')
+                player_one.balance -= wager
+                wager *= 2
+                players_cards.append(card_shoe.deal_a_card())
+                player_total = calculate_hand_total(players_cards)
+                print('\nPlayer: ', end = '')
+                display_cards(players_cards)
+                break
+            elif player_decision == 'x':
+                print(f'\nSurrendering. \n\nReturning ${int(wager * 0.5)}')
+                return int(wager * 0.5)
             else:
                 break
 
