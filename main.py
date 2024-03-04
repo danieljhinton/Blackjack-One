@@ -103,12 +103,12 @@ def player_wager_amount(player):
             wager = int(input('\nEnter bet amount (minimum $10, units $10): '))
         except:
             print(f'\nPlease enter an amount between $10 and ${player.balance}')
-
-        if 10 <= wager <= player.balance and wager % 10 == 0:
-            return wager
         else:
-            print(f'\nPlease enter an amount between $10 and ${player.balance} in\
- units of $10')
+            if 10 <= wager <= player.balance and wager % 10 == 0:
+                return wager
+            else:
+                print(f'\nPlease enter an amount between $10 and ${player.balance} in\
+    units of $10')
 
 def display_cards(cards):
     '''
