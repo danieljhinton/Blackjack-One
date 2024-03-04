@@ -148,12 +148,12 @@ def calculate_hand_total(hand):
 
 def player_option():
     '''
-    Take input from user to hit or stay
+    Take input from user to hit, stay or double down
     '''
     while True:
-        decision = input('\n\nHit or Stay? Type H to hit or S to stay: ').strip()\
-            .lower()
-        if decision in ('h', 's'):
+        decision = input('\n\nHit or Stay? Type H to hit, S to stay or D to \
+                         double down').strip().lower()
+        if decision in ('h', 's', 'd'):
             return decision
         else:
             print('\nInvalid input.', end = '')
