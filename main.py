@@ -151,9 +151,9 @@ def player_option():
     Take input from user to hit, stay or double down
     '''
     while True:
-        decision = input('\n\nHit or Stay? Type H to hit, S to stay or D to \
-                         double down').strip().lower()
-        if decision in ('h', 's', 'd'):
+        decision = input('\n\nHit or Stay? Type H to hit, S to stay, D to \
+double down or X to surrender').strip().lower()
+        if decision in ('h', 's', 'd', 'x'):
             return decision
         else:
             print('\nInvalid input.', end = '')
