@@ -108,7 +108,7 @@ def player_wager_amount(player):
                 return wager
             else:
                 print(f'\nPlease enter an amount between $10 and ${player.balance} in\
-    units of $10')
+units of $10')
 
 def display_cards(cards):
     '''
