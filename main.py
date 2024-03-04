@@ -71,7 +71,6 @@ def starting_balance():
         else:
             print('Please enter a number between 100 and 1,000,000')
 
-
 def number_of_decks():
     
     while True:
@@ -85,6 +84,23 @@ def number_of_decks():
             return num_of_decks
         else:
             print('Please enter a number betwen 1 and 8')
+
+
+# Gameplay functions
+
+def player_wager_amount(player):
+    
+    while True:
+
+        try:
+            wager = int(input('Enter bet amount (minimum $25): '))
+        except:
+            print(f'Please enter an amount between $25 and ${player.balance}')
+
+        if 25 <= wager <= player.balance:
+            return wager
+        else:
+            print(f'Please enter an amount between $25 and ${player.balance}')
 
 
 # Game logic
