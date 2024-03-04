@@ -61,12 +61,41 @@ class Player:
         return f'Balance: ${self.balance:,}'
 
 
+# Functions which prompt player for game settings when starting a new game
+
+def starting_balance():
+
+    while True:
+
+        try:
+            balance = int(input('Enter starting balance: '))
+        except:
+            print('Please enter a whole number as your starting balance')
+        else:
+            return balance
+
+def number_of_decks():
+    
+    while True:
+
+        try:
+            num_of_decks = int(input('Enter number of decks (1-8): '))
+        except:
+            print('Please enter a number betwen 1 and 8')
+    
+    if 1 <= num_of_decks <= 8:
+        return num_of_decks
+    else:
+        print('Please enter a number betwen 1 and 8')
+        
+
+
 # Game logic
 
 game_on = True
 player_one = Player(10000)
 
 while game_on:
-    
+
     card_shoe = Deck(8)
     card_shoe.shuffle()
