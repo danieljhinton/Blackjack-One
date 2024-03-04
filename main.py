@@ -58,7 +58,9 @@ class Player:
 # Functions which prompt player for game settings when starting a new game
 
 def starting_balance():
-
+    '''
+    Get input from the user as to how much money they wish to start with
+    '''
     while True:
 
         try:
@@ -72,7 +74,9 @@ def starting_balance():
             print('Please enter a number between 100 and 1,000,000')
 
 def number_of_decks():
-    
+    '''
+    Get input from user as to how many decks they wish to play with
+    '''
     while True:
 
         try:
@@ -89,7 +93,10 @@ def number_of_decks():
 # Gameplay functions
 
 def player_wager_amount(player):
-    
+    '''
+    Get input from user as to how much they wish to wager in the next hand,
+    from minimum $25 to their full balance
+    '''
     while True:
 
         try:
@@ -103,6 +110,9 @@ def player_wager_amount(player):
             print(f'Please enter an amount between $25 and ${player.balance}')
 
 def betting_round(wager):
+    '''
+    Betting round logic
+    '''
     global player_one, card_shoe
     dealers_cards = [card_shoe.deal_a_card()]
     players_cards = [card_shoe.deal_a_card(), card_shoe.deal_a_card()]
