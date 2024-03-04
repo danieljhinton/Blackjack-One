@@ -221,7 +221,7 @@ def betting_round(wager):
     while dealer_total < 17:    # Dealing the dealer's cards
         dealers_cards.append(card_shoe.deal_a_card())
         dealer_total = calculate_hand_total(dealers_cards)
-        print('\nDealer: ', end = '')
+        print('\n\nDealer: ', end = '')
         display_cards(dealers_cards)
 
     if dealer_total > 21:    # Resolving the hand if the dealer busted
