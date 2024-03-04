@@ -1,3 +1,7 @@
+'''
+All code contained in this file
+'''
+
 import random
 
 # Card data
@@ -13,7 +17,9 @@ values = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'T':10,
 # Card class
 
 class Card:
-
+    '''
+    Class for each individual playing card
+    '''
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
@@ -28,7 +34,11 @@ class Card:
 # 1-8 decks depending on the game rules)
 
 class Deck:
-
+    '''
+    Class for a whole deck/shoe of cards. Takes integer argument between 1-8
+    as how many decks of cards to use (Blackjack can be played with 1-8 decks
+    depending on the house rules)
+    '''
     def __init__(self, num_of_decks):
         self.all_cards = []
         for i in range(num_of_decks):
@@ -37,15 +47,23 @@ class Deck:
                     self.all_cards.append(Card(suit, rank))
 
     def shuffle(self):
+        '''
+        Randomize the order of the deck/shoe
+        '''
         random.shuffle(self.all_cards)
 
     def deal_a_card(self):
+        '''
+        Deal an individual card from the deck/shoe
+        '''
         return self.all_cards.pop()
 
 
 # Player class
-
 class Player:
+    '''
+    Class for the user to keep track of their balance
+    '''
 
     def __init__(self, balance):
         self.balance = balance
