@@ -144,7 +144,12 @@ def betting_round(wager):
         if dealer_total in (10, 11):
             print('Blackjack!\nChecking for dealer Blackjack: ')
             dealers_cards.append(card_shoe.deal_a_card())
-
+            display_cards(dealers_cards)
+            dealer_total = calculate_hand_total(dealers_cards)
+            if dealer_total == 21:
+                print('Blackjack! Stand off!')
+            else:
+                print(f'Winner! You won {wager * 1.5}!')
 
 
 # Game logic
