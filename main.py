@@ -95,19 +95,20 @@ def number_of_decks():
 def player_wager_amount(player):
     '''
     Get input from user as to how much they wish to wager in the next hand,
-    from minimum $25 to their full balance
+    from minimum $10 to their full balance, in units of $10
     '''
     while True:
 
         try:
-            wager = int(input('Enter bet amount (minimum $25): '))
+            wager = int(input('Enter bet amount (minimum $10, units $10): '))
         except:
-            print(f'Please enter an amount between $25 and ${player.balance}')
+            print(f'Please enter an amount between $10 and ${player.balance}')
 
-        if 25 <= wager <= player.balance:
+        if 10 <= wager <= player.balance and wager % 10 == 0:
             return wager
         else:
-            print(f'Please enter an amount between $25 and ${player.balance}')
+            print(f'Please enter an amount between $10 and ${player.balance} in\
+ units of $10')
 
 def display_cards(cards):
     '''
