@@ -121,11 +121,24 @@ def calculate_hand_total(hand):
     '''
     Return the value of the player or dealer's hand (ie. J5 = 15)
     '''
-    return ([i.value for i in hand])
+    return sum([i.value for i in hand])
+
+def player_option():
+    '''
+    Take input from user to hit or stay
+    '''
+    while True:
+        decision = input('\nHit or Stay? Type H to hit or S to stay: ').strip()\
+            .lower()
+        if decision in ('h', 's'):
+            return decision
+        else:
+            print('Invalid input.')
+
 
 def betting_round(wager):
     '''
-    Betting round logic
+    Betting round logic. Takes wager amount as input, returns winnings.
     '''
     global player_one, card_shoe
     dealers_cards = [card_shoe.deal_a_card()]
@@ -150,6 +163,18 @@ def betting_round(wager):
                 print('Blackjack! Stand off!')
             else:
                 print(f'Winner! You won {wager * 1.5}!')
+                return wager * 1.5
+    else:
+        while player_total < 21:
+            player_decision = player_option()
+            if player_decision == 'h':
+                players_cards.append(card_shoe.deal_a_card())
+                player_total = calculate_hand_total(players_cards)
+                display_cards(players_cards)
+            else:
+                break
+
+
 
 
 # Game logic
