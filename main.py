@@ -124,8 +124,8 @@ def betting_round(wager):
     dealers_cards = [card_shoe.deal_a_card()]
     players_cards = [card_shoe.deal_a_card(), card_shoe.deal_a_card()]
 
-    dealer_total = 0
-    player_total = 0
+    dealer_total = sum([i.value for i in dealers_cards])
+    player_total = sum([i.value for i in dealers_cards])
 
     print('Dealer: ', end = '')
     display_cards(dealers_cards)
