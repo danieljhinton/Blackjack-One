@@ -83,11 +83,10 @@ def number_of_decks():
         except:
             print('Please enter a number betwen 1 and 8')
     
-    if 1 <= num_of_decks <= 8:
-        return num_of_decks
-    else:
-        print('Please enter a number betwen 1 and 8')
-        
+        if 1 <= num_of_decks <= 8:
+            return num_of_decks
+        else:
+            print('Please enter a number betwen 1 and 8')
 
 
 # Game logic
