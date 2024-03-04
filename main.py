@@ -117,6 +117,19 @@ def betting_round(wager):
     dealers_cards = [card_shoe.deal_a_card()]
     players_cards = [card_shoe.deal_a_card(), card_shoe.deal_a_card()]
 
+    dealer_total = 0
+    player_total = 0
+
+    print('Dealer: ', end = '')
+    for i in dealers_cards:
+        print(i, end = ' ')
+        dealer_total += i.value
+
+    print('\nPlayer: ', end = '')
+    for i in players_cards:
+        print(i, end = ' ')
+        player_total += i.value
+
 # Game logic
 
 card_shoe = Deck(number_of_decks())
