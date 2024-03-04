@@ -121,7 +121,13 @@ def calculate_hand_total(hand):
     '''
     Return the value of the player or dealer's hand (ie. J5 = 15)
     '''
-    return sum([i.value for i in hand])
+    card_value_list = [i.value for i in hand]
+    hand_total = sum(card_value_list)
+
+    if 11 in card_value_list and hand_total > 21:    # Dealing with Aces
+        hand_total -= 10
+
+    return hand_total        
 
 def player_option():
     '''
@@ -153,7 +159,7 @@ def betting_round(wager):
     print('\nPlayer: ', end = '')
     display_cards(players_cards)
 
-    if player_total == 21:
+    if player_total == 21:    # Resolving the hand if player has blackjack
         if dealer_total in (10, 11):
             print('Blackjack!\nChecking for dealer Blackjack: ')
             dealers_cards.append(card_shoe.deal_a_card())
@@ -173,6 +179,8 @@ def betting_round(wager):
                 display_cards(players_cards)
             else:
                 break
+    
+    # Dealing the dealer's cards
 
 
 
