@@ -95,10 +95,5 @@ def number_of_decks():
 
 # Game logic
 
-game_on = True
-player_one = Player(10000)
-
-while game_on:
-
-    card_shoe = Deck(8)
-    card_shoe.shuffle()
+card_shoe = Deck(number_of_decks())
+player_one = Player(starting_balance())
