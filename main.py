@@ -59,8 +59,14 @@ class Player:
 
     def __str__(self):
         return f'Balance: ${self.balance:,}'
-    
-# Testing player class
 
+
+# Game logic
+
+game_on = True
 player_one = Player(10000)
-print(player_one)
+
+while game_on:
+    
+    card_shoe = Deck(8)
+    card_shoe.shuffle()
