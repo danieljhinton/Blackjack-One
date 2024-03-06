@@ -6,7 +6,6 @@ HOUSE RULES:
 - Double down any two cards
 '''
 
-from functions import *
 import random
 
 # Card data
@@ -18,8 +17,7 @@ ranks = ('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A')
 values = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'T':10,
           'J':10, 'Q':10, 'K':10, 'A':11}    # Make A 1 or 11
 
-
-# Card class
+# Classes
 
 class Card:
     '''
@@ -32,11 +30,6 @@ class Card:
 
     def __str__(self):
         return f'{self.rank}{self.suit}'
-
-
-# Deck class - Create a deck of cards with functions to shuffle and deal one.
-# Takes single int argument for number of decks (Blackjack can be played with
-# 1-8 decks depending on the game rules)
 
 class Deck:
     '''
@@ -63,8 +56,6 @@ class Deck:
         '''
         return self.all_cards.pop()
 
-
-# Player class
 class Player:
     '''
     Class for the user to keep track of their balance
@@ -76,6 +67,8 @@ class Player:
     def __str__(self):
         return f'Balance: ${self.balance:,}'
 
+
+# Functions
 
 # Functions which prompt player for game settings when starting a new game
 
