@@ -240,12 +240,16 @@ card_shoe.shuffle()
 
 game_on = True
 
-while game_on and player_one.balance >= 10:
+def main():
+    while game_on and player_one.balance >= 10:
 
-    print(f'\nCurrent balance: ${player_one.balance:,}')
-    wager = player_wager_amount(player_one)
-    winnings = betting_round(wager)
-    player_one.balance -= wager
-    player_one.balance += winnings
+        print(f'\nCurrent balance: ${player_one.balance:,}')
+        wager = player_wager_amount(player_one)
+        winnings = betting_round(wager)
+        player_one.balance -= wager
+        player_one.balance += winnings
 
-print('\nInsufficient balance. Thanks for playing.')
+    print('\nInsufficient balance. Thanks for playing.')
+
+if __name__ == '__main__':
+    main()
